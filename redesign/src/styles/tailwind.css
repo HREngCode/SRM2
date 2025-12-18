@@ -1,0 +1,4 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+/* `tw-animate-css` removed — not installed in this project. Add it back only if you install the package. */

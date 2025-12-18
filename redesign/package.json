@@ -1,0 +1,25 @@
+{
+  "name": "redesign",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5173"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.26",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
