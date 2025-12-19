@@ -45,7 +45,9 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
               onClick={() => scrollToSection('home')}
               className="flex items-center gap-3"
             >
-              <div className="w-12 h-12 flex items-center justify-center bg-yellow-500 rounded-full text-white font-bold">SR</div>
+              <div className="w-12 h-12 overflow-hidden">
+                <img src={new URL('./assets/hplogo.png', import.meta.url).href} alt="Home Logo" className="w-full h-full object-cover" />
+              </div>
               <span className="text-xl font-semibold text-gray-900 hidden sm:inline">Stallion Ranch Media</span>
             </button>
           </div>

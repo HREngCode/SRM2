@@ -14,7 +14,7 @@ const projects = [
     title: 'Corporate Website Redesign',
     category: 'Website',
     description: 'Modern, responsive website with improved UX and 200% increase in conversion rates.',
-    image: 'https://images.unsplash.com/photo-1762341120156-4a8303067873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NTk5NTQ2MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: new URL('./assets/example.png', import.meta.url).href,
     tags: ['WordPress', 'SEO', 'Analytics'],
   },
   {
