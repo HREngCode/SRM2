@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+const ranchbg = new URL('./assets/ranchbg2.png', import.meta.url).href;
 
 export function Hero() {
   const scrollToContact = () => {
@@ -18,11 +19,11 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <ImageWithFallback
-          src="https://images.unsplash.com/photo-1762341120156-4a8303067873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc2NTk5NTQ2MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          src={ranchbg}
           alt="Modern office technology"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-800/90 to-gray-700/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/75 via-gray-800/60 to-gray-700/50" />
       </div>
 
       {/* Content */}
