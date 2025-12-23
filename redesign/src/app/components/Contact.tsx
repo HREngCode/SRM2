@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -11,12 +12,61 @@ export function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Initialize EmailJS with the public key when running in the browser
+  useEffect(() => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey) {
+      try {
+        emailjs.init(publicKey);
+      } catch (e) {
+        // ignore - init may already have been called by send
+      }
+    }
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, this would send the data to a backend
-    alert('Thank you for your interest! We will get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus('error');
+      setErrorMessage('Missing EmailJS environment variables. Check `redesign/.env`.');
+      console.error('Missing EmailJS environment variables');
+      return;
+    }
+
+    setStatus('sending');
+    setErrorMessage(null);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      message: formData.message,
+    };
+
+    try {
+      const res = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      setStatus('success');
+      setErrorMessage(null);
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      console.log('EmailJS send response', res);
+    } catch (err: any) {
+      console.error('EmailJS send error', err);
+      setStatus('error');
+      const msg = err?.text || err?.message || JSON.stringify(err) || 'Unknown error';
+      setErrorMessage(msg);
+    }
   };
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -136,11 +186,25 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-600 transition-colors"
+                disabled={status === 'sending'}
+                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-60"
               >
-                Send Message
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
                 <Send size={20} />
               </button>
+
+              {status === 'success' && (
+                <div className="mt-3 text-green-600">Thank you — your message has been sent.</div>
+              )}
+              {status === 'error' && (
+                <div className="mt-3 text-red-600">Sorry, something went wrong. Please try again later.</div>
+              )}
+
+              {errorMessage && (
+                <div className="mt-2 text-sm text-red-600 break-words">Error: {errorMessage}</div>
+              )}
+
+
             </form>
           </motion.div>
 
