@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ExternalLink } from 'lucide-react';
@@ -34,6 +35,29 @@ const projects = [
 ];
 
 export function Portfolio() {
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeTitle, setActiveTitle] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveImage(null);
+        setActiveTitle(null);
+      }
+    };
+
+    if (activeImage) {
+      document.addEventListener('keydown', onKey);
+      // prevent background scrolling while modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [activeImage]);
+
   return (
     <section id="portfolio" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +94,11 @@ export function Portfolio() {
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-gray-900">
                   {project.category}
                 </div>
-                <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={() => { setActiveImage(project.image); setActiveTitle(project.title); }}
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  aria-label={`Open ${project.title} preview`}
+                >
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                     <ExternalLink className="text-yellow-600" size={20} />
                   </div>
@@ -93,6 +121,27 @@ export function Portfolio() {
             </motion.div>
           ))}
         </div>
+
+        {activeImage && (
+          <div
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            onClick={() => { setActiveImage(null); setActiveTitle(null); }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeTitle ?? 'Image preview'}
+          >
+            <div className="relative max-w-[90%] max-h-[90%]" onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={() => { setActiveImage(null); setActiveTitle(null); }}
+                className="absolute top-2 right-2 bg-white/90 rounded-full p-2 z-10"
+                aria-label="Close image preview"
+              >
+                ✕
+              </button>
+              <img src={activeImage ?? undefined} alt={activeTitle ?? 'Full size'} className="max-w-full max-h-[80vh] object-contain rounded" />
+            </div>
+          </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
