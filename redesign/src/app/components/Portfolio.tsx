@@ -5,17 +5,17 @@ import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
+    title: 'Mobile App Development',
     category: 'Web Application',
-    description: 'Custom shopping platform with inventory management, payment processing, and order tracking.',
-    image: 'https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3NjYwMjUzMzN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Custom Applications to meet your business needs and streamline your operations.',
+    image: new URL('./assets/flocrm.png', import.meta.url).href,
     tags: ['React', 'Node.js', 'Stripe'],
   },
   {
     title: 'Corporate Website Redesign',
     category: 'Website',
     description: 'Modern, responsive website with improved UX and 200% increase in conversion rates.',
-    image: new URL('./assets/example.png', import.meta.url).href,
+    image: new URL('./assets/service.png', import.meta.url).href,
     tags: ['WordPress', 'SEO', 'Analytics'],
   },
   {
@@ -28,8 +28,8 @@ const projects = [
   {
     title: 'Product Launch Video',
     category: 'Video',
-    description: 'Engaging promotional video that generated 50k+ views and drove product sales.',
-    image: 'https://images.unsplash.com/photo-1654288891700-95f67982cbcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMHByb2R1Y3Rpb24lMjBjYW1lcmF8ZW58MXx8fHwxNzY2MDU2ODEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    description: 'Engaging promotional video that assists your customers and drives product sales.',
+    image: new URL('./assets/launch.png', import.meta.url).href,
     tags: ['Production', 'Editing', 'Motion Graphics'],
   },
 ];
