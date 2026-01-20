@@ -15,6 +15,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
     { id: 'services', label: 'Services' },
     { id: 'about', label: 'About' },
     { id: 'portfolio', label: 'Portfolio' },
+    { id: 'merch', label: 'Merch' },
     { id: 'contact', label: 'Contact' },
   ];
 

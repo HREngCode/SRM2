@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" width="360" height="270">
+  <rect width="120" height="90" rx="10" fill="#f3f4f6" />
+  <path d="M15 30 Q30 5 60 20 Q90 35 105 30 L105 65 Q90 80 60 70 Q30 60 15 65 Z" fill="#111827" opacity="0.8"/>
+  <text x="60" y="55" font-size="12" text-anchor="middle" fill="#fff">SRM</text>
+</svg>
