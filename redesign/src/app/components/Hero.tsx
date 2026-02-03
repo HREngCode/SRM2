@@ -21,19 +21,11 @@ export function Hero() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        {/* <img
+        <img
           src={ranchbg}
           alt="Modern office technology"
           className="w-full h-full object-cover"
-        /> */}
-        <iframe
-          className="w-full h-full object-cover"
-          src="https://www.youtube.com/embed/pgTB8kzD9RE?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=pgTB8kzD9RE"
-          title="YouTube background video"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        ></iframe>
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/75 via-gray-800/60 to-gray-700/50" />
       </div>
 

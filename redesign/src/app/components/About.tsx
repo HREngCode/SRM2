@@ -85,13 +85,11 @@ export function About() {
           >
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
               <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/Zuc8nkX7BMo?si=hoWjlojQlHbKuDYM&amp;controls=0"
-                title="YouTube video player"
+                className="w-full h-full object-cover"
+                src="https://www.youtube.com/embed/pgTB8kzD9RE?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=pgTB8kzD9RE"
+                title="YouTube background video"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
+                allow="autoplay; encrypted-media"
                 allowFullScreen
               ></iframe>
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent pointer-events-none" />
