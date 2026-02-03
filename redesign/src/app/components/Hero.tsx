@@ -1,28 +1,39 @@
-import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-const ranchbg = new URL('./assets/ranchbg2.png', import.meta.url).href;
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+const ranchbg = new URL("./assets/ranchbg2.png", import.meta.url).href;
 
 export function Hero() {
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("contact");
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-20"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <ImageWithFallback
+        {/* <img
           src={ranchbg}
           alt="Modern office technology"
           className="w-full h-full object-cover"
-        />
+        /> */}
+        <iframe
+          className="w-full h-full object-cover"
+          src="https://www.youtube.com/embed/pgTB8kzD9RE?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=pgTB8kzD9RE"
+          title="YouTube background video"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/75 via-gray-800/60 to-gray-700/50" />
       </div>
 
@@ -38,28 +49,34 @@ export function Hero() {
               Bring Your Ideas to Life
             </h1>
             <p className="text-xl sm:text-2xl text-yellow-100 mb-8">
-              Custom web applications, websites, graphics, and videos designed for small businesses
+              Custom web applications, websites, graphics, and videos designed
+              for small businesses
             </p>
             <p className="text-lg text-gray-50/90 mb-10 max-w-2xl">
-              At Stallion Ranch Media, we help organizations work smarter, not harder. 
-              We create digital solutions that automate tasks, streamline workflows, and boost efficiency.
+              At Stallion Ranch Media, we help organizations work smarter, not
+              harder. We create digital solutions that automate tasks,
+              streamline workflows, and boost efficiency.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={scrollToContact}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-400 transition-all hover:scale-105"
               >
                 Get Started
                 <ArrowRight size={20} />
               </button>
-              <button 
+              <button
                 onClick={() => {
-                  const element = document.getElementById('services');
+                  const element = document.getElementById("services");
                   if (element) {
                     const offset = 80;
                     const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    const offsetPosition =
+                      elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth",
+                    });
                   }
                 }}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 transition-all"

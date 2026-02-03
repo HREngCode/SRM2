@@ -1,22 +1,24 @@
-import { Target, Zap, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { ImageWithFallback } from './figma/ImageWithFallback.tsx';
+import { Target, Zap, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const values = [
   {
     icon: Target,
-    title: 'Understanding First',
-    description: 'We take time to understand your business inside and out before proposing solutions.',
+    title: "Understanding First",
+    description:
+      "We take time to understand your business inside and out before proposing solutions.",
   },
   {
     icon: Zap,
-    title: 'Efficiency Focused',
-    description: 'Our solutions automate tasks and streamline workflows so you can focus on growth.',
+    title: "Efficiency Focused",
+    description:
+      "Our solutions automate tasks and streamline workflows so you can focus on growth.",
   },
   {
     icon: CheckCircle,
-    title: 'Results Driven',
-    description: 'We measure success by the tangible impact we make on your business operations.',
+    title: "Results Driven",
+    description:
+      "We measure success by the tangible impact we make on your business operations.",
   },
 ];
 
@@ -36,13 +38,14 @@ export function About() {
               Work Smarter, Not Harder
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Our goal is simple — help organizations work smarter, not harder. We take time to 
-              understand your business inside and out, then create digital solutions that automate 
-              tasks, streamline workflows, and boost efficiency.
+              Our goal is simple — help organizations work smarter, not harder.
+              We take time to understand your business inside and out, then
+              create digital solutions that automate tasks, streamline
+              workflows, and boost efficiency.
             </p>
             <p className="text-lg text-gray-600 mb-8">
-              With the tech side handled, you can focus on what matters most — growing your business 
-              and perfecting your craft.
+              With the tech side handled, you can focus on what matters most —
+              growing your business and perfecting your craft.
             </p>
 
             <div className="space-y-6">
@@ -61,7 +64,9 @@ export function About() {
                       <Icon className="text-yellow-600" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl text-gray-900 mb-2">{value.title}</h3>
+                      <h3 className="text-xl text-gray-900 mb-2">
+                        {value.title}
+                      </h3>
                       <p className="text-gray-600">{value.description}</p>
                     </div>
                   </motion.div>
@@ -78,15 +83,20 @@ export function About() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <ImageWithFallback
-                src={new URL('./assets/smarter.png', import.meta.url).href}
-                alt="Creative design workspace"
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent" />
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/Zuc8nkX7BMo?si=hoWjlojQlHbKuDYM&amp;controls=0"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent pointer-events-none" />
             </div>
-            
+
             {/* Floating Stats */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
