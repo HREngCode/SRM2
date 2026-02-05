@@ -89,8 +89,7 @@ export function About() {
                 src="https://www.youtube.com/embed/Zuc8nkX7BMo?si=hoWjlojQlHbKuDYM&amp;controls=0"
                 title="YouTube video player"
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
+                allow="autoplay; encrypted-media"
                 allowFullScreen
               ></iframe>
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent pointer-events-none" />

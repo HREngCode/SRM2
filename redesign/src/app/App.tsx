@@ -9,7 +9,7 @@ import { Navigation } from './components/Navigation';
 import { TShirtTalk } from './components/TShirtTalk';
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   return (
     <div className="size-full bg-transparent">
