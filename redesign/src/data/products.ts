@@ -9,6 +9,33 @@ export type Product = {
 };
 
 export const products: Product[] = [
+    {
+    id: 'fine-jersey-tee',
+    name: 'T Shirt Talk Tee',
+    price: 25,
+    description: 'Soft and comfortable fine jersey t-shirt',
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    image: new URL('../app/components/assets/TSHTTKBRN.png', import.meta.url).href,
+    url: 'https://stallionranchmedia.printful.me/product/mens-t-shirt-talk-t',
+  },
+  {
+    id: 'talk-sweatshirt',
+    name: 'T-Shirt Talk Sweatshirt',
+    price: 40,
+    description: 'Classic T-Shirt Talk sweatshirt design',
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    image: new URL('../app/components/assets/TSTSWTSHRTGRY.png', import.meta.url).href,
+    url: 'https://stallionranchmedia.printful.me/product/t-shirt-talk-sweatshirt',
+  },
+  {
+    id: 'talk-hoodie',
+    name: 'T-Shirt Talk Hoodie',
+    price: 40,
+    description: 'Comfortable T-Shirt Talk hoodie',
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    image: new URL('../app/components/assets/TSTHOODRED.png', import.meta.url).href,
+    url: 'https://stallionranchmedia.printful.me/product/t-shirt-talk-hoodie-696aade676dd7',
+  },
   {
     id: 'adidas-polo',
     name: 'Stallion Ranch Media Polo',
@@ -20,7 +47,7 @@ export const products: Product[] = [
   },
   {
     id: 'quarter-zip',
-    name: 'Lightweight Quarter Zip Pullover',
+    name: 'Stallion Ranch Media Light Quarter Zip Pullover',
     price: 28,
     description: 'Comfortable lightweight quarter zip pullover',
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
@@ -35,32 +62,5 @@ export const products: Product[] = [
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
     image: new URL('../app/components/assets/SRMSWTSHRTBLK.png', import.meta.url).href,
     url: 'https://stallionranchmedia.printful.me/product/unisex-premium-sweatshirt',
-  },
-  {
-    id: 'fine-jersey-tee',
-    name: 'T Shirt Talk Tee',
-    price: 25,
-    description: 'Soft and comfortable fine jersey t-shirt',
-    sizes: ['S', 'M', 'L', 'XL', '2XL'],
-    image: new URL('../app/components/assets/TSHTTKBRN.png', import.meta.url).href,
-    url: 'https://stallionranchmedia.printful.me/product/unisex-fine-jersey-tee',
-  },
-  {
-    id: 'talk-sweatshirt',
-    name: 'T-Shirt Talk Sweatshirt',
-    price: 35,
-    description: 'Classic T-Shirt Talk sweatshirt design',
-    sizes: ['S', 'M', 'L', 'XL', '2XL'],
-    image: new URL('../app/components/assets/TSTSWTSHRTGRY.png', import.meta.url).href,
-    url: 'https://stallionranchmedia.printful.me/product/t-shirt-talk-sweatshirt',
-  },
-  {
-    id: 'talk-hoodie',
-    name: 'T-Shirt Talk Hoodie',
-    price: 35,
-    description: 'Comfortable T-Shirt Talk hoodie',
-    sizes: ['S', 'M', 'L', 'XL', '2XL'],
-    image: new URL('../app/components/assets/TSTHOODRED.png', import.meta.url).href,
-    url: 'https://stallionranchmedia.printful.me/product/t-shirt-talk-hoodie-696aade676dd7',
   },
 ];

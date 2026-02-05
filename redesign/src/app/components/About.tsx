@@ -24,9 +24,9 @@ const values = [
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -37,13 +37,13 @@ export function About() {
             <h2 className="text-4xl sm:text-5xl text-gray-900 mb-6">
               Work Smarter, Not Harder
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-900 mb-6">
               Our goal is simple — help organizations work smarter, not harder.
               We take time to understand your business inside and out, then
               create digital solutions that automate tasks, streamline
               workflows, and boost efficiency.
             </p>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-900 mb-8">
               With the tech side handled, you can focus on what matters most —
               growing your business and perfecting your craft.
             </p>
@@ -67,7 +67,7 @@ export function About() {
                       <h3 className="text-xl text-gray-900 mb-2">
                         {value.title}
                       </h3>
-                      <p className="text-gray-600">{value.description}</p>
+                      <p className="text-gray-900">{value.description}</p>
                     </div>
                   </motion.div>
                 );
@@ -85,8 +85,7 @@ export function About() {
           >
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
               <iframe
-                width="560"
-                height="315"
+                className="w-full h-full"
                 src="https://www.youtube.com/embed/Zuc8nkX7BMo?si=hoWjlojQlHbKuDYM&amp;controls=0"
                 title="YouTube video player"
                 frameBorder="0"
@@ -98,27 +97,29 @@ export function About() {
             </div>
 
             {/* Floating Stats */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-6"
-            >
-              <div className="text-4xl text-yellow-600 mb-1">100%</div>
-              <div className="text-gray-600">Client Focused</div>
-            </motion.div>
+            <div className="grid grid-cols-2 gap-4 mt-8 lg:absolute lg:mt-0 lg:-bottom-6 lg:-left-6 lg:-top-auto lg:-right-auto lg:gap-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-white rounded-xl shadow-xl p-4 lg:p-6 col-span-1"
+              >
+                <div className="text-3xl lg:text-4xl text-yellow-600 mb-1">100%</div>
+                <div className="text-sm lg:text-base text-gray-600">Client Focused</div>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -top-6 -right-6 bg-gradient-to-br from-gray-700 to-yellow-500 rounded-xl shadow-xl p-6 text-white"
-            >
-              <div className="text-4xl mb-1">24/7</div>
-              <div className="text-yellow-100">Support Available</div>
-            </motion.div>
+              {/* <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="bg-gradient-to-br from-gray-700 to-yellow-500 rounded-xl shadow-xl p-4 lg:p-6 text-white col-span-1"
+              >
+                <div className="text-3xl lg:text-4xl mb-1">24/7</div>
+                <div className="text-sm lg:text-base text-yellow-100">Support Available</div>
+              </motion.div> */}
+            </div>
           </motion.div>
         </div>
       </div>

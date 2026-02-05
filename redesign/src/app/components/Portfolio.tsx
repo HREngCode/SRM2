@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { HTMLAttributeReferrerPolicy ,useState, useEffect } from 'react';
+import { PortfolioCard, PortfolioProject } from './PortfolioCard';
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ExternalLink } from 'lucide-react';
@@ -29,24 +30,28 @@ const projects = [
     title: 'Product Launch Video',
     category: 'Video',
     description: 'Engaging promotional video that assists your customers and drives product sales.',
-    image: new URL('./assets/launch.png', import.meta.url).href,
+    video: {
+      src: 'https://www.youtube.com/embed/pgTB8kzD9RE?autoplay=1&mute=1&playsinline=1',
+      title: 'YouTube video player',
+      allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+      referrerPolicy: 'strict-origin-when-cross-origin',
+      allowFullScreen: true,
+    },
     tags: ['Production', 'Editing', 'Motion Graphics'],
   },
 ];
 
 export function Portfolio() {
-  const [activeImage, setActiveImage] = useState<string | null>(null);
-  const [activeTitle, setActiveTitle] = useState<string | null>(null);
+  const [activeProject, setActiveProject] = useState<PortfolioProject | null>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setActiveImage(null);
-        setActiveTitle(null);
+        setActiveProject(null);
       }
     };
 
-    if (activeImage) {
+    if (activeProject) {
       document.addEventListener('keydown', onKey);
       // prevent background scrolling while modal is open
       document.body.style.overflow = 'hidden';
@@ -56,118 +61,64 @@ export function Portfolio() {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [activeImage]);
+  }, [activeProject]);
 
-  return (
-    <section id="portfolio" className="py-24 bg-gray-50">
+    return (
+    <section id="portfolio" className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">Our Work</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real projects, real results. See how we've helped businesses transform their digital presence.
-          </p>
-        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <PortfolioCard
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-gray-900">
-                  {project.category}
-                </div>
-                <button
-                  onClick={() => { setActiveImage(project.image); setActiveTitle(project.title); }}
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                  aria-label={`Open ${project.title} preview`}
-                >
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <ExternalLink className="text-yellow-600" size={20} />
-                  </div>
-                </button>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-yellow-50 text-yellow-700 rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              index={index}
+              onOpen={setActiveProject}
+            />
           ))}
         </div>
 
-        {activeImage && (
+        {/* MODAL */}
+        {activeProject && (
           <div
             className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-            onClick={() => { setActiveImage(null); setActiveTitle(null); }}
+            onClick={() => setActiveProject(null)}
             role="dialog"
             aria-modal="true"
-            aria-label={activeTitle ?? 'Image preview'}
+            aria-label={activeProject.title}
           >
-            <div className="relative max-w-[90%] max-h-[90%]" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="relative w-[90%] max-w-5xl aspect-video"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
-                onClick={() => { setActiveImage(null); setActiveTitle(null); }}
-                className="absolute top-2 right-2 bg-white/90 rounded-full p-2 z-10"
-                aria-label="Close image preview"
+                onClick={() => setActiveProject(null)}
+                className="absolute -top-10 right-0 bg-white/90 rounded-full p-2 z-10"
+                aria-label="Close preview"
               >
                 ✕
               </button>
-              <img src={activeImage ?? undefined} alt={activeTitle ?? 'Full size'} className="max-w-full max-h-[80vh] object-contain rounded" />
+
+              {activeProject.video ? (
+                <iframe
+                  src={`${activeProject.video.src}&autoplay=1&mute=0`}
+                  title={activeProject.video.title}
+                  allow={activeProject.video.allow}
+                  referrerPolicy={activeProject.video.referrerPolicy as HTMLAttributeReferrerPolicy}
+                  allowFullScreen
+                  className="w-full h-full rounded-lg"
+                />
+              ) : (
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.title}
+                  className="w-full h-full object-contain rounded-lg bg-black"
+                />
+              )}
             </div>
           </div>
         )}
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <p className="text-gray-600 mb-6">
-            Want to see more examples of our work?
-          </p>
-          <button 
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) {
-                const offset = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-              }
-            }}
-            className="px-8 py-3 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-600 transition-colors"
-          >
-            Get in Touch
-          </button>
-        </motion.div>
       </div>
     </section>
   );

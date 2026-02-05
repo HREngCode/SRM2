@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { color, motion, styleEffect } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -76,7 +76,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">Let's Work Together</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-900 max-w-2xl mx-auto">
             Ready to transform your business with digital solutions? Get in touch and let's discuss your project.
           </p>
         </motion.div>
@@ -101,7 +101,7 @@ export function Contact() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-gray-900 mb-2">
                   Your Name *
                 </label>
                 <input
@@ -117,7 +117,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-gray-900 mb-2">
                   Email Address *
                 </label>
                 <input
@@ -133,7 +133,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-gray-900 mb-2">
                   Phone Number
                 </label>
                 <input
@@ -148,7 +148,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-gray-700 mb-2">
+                <label htmlFor="service" className="block text-gray-900 mb-2">
                   Service Interested In *
                 </label>
                 <select
@@ -169,7 +169,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-gray-900 mb-2">
                   Tell Us About Your Project *
                 </label>
                 <textarea
@@ -255,28 +255,28 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-8">
+            <div className="bg-transparent rounded-2xl p-8">
               <h3 className="text-2xl text-gray-900 mb-4">Why Choose Us?</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-600">Deep understanding of your business needs</span>
+                  <span className="text-gray-900">Deep understanding of your business needs</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-600">Custom solutions, not cookie-cutter templates</span>
+                  <span className="text-gray-900">Custom solutions, not cookie-cutter templates</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-600">Focus on automation and efficiency</span>
+                  <span className="text-gray-900">Focus on automation and efficiency</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-600">Ongoing support and maintenance</span>
+                  <span className="text-gray-900">Ongoing support and maintenance</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-600">Small business pricing and flexibility</span>
+                  <span className="text-gray-900">Small business pricing and flexibility</span>
                 </li>
               </ul>
             </div>
@@ -286,7 +286,7 @@ export function Contact() {
 
       {/* Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-8 border-t border-gray-200">
-        <div className="text-center text-gray-600">
+        <div className="text-center text-gray-900">
           <p>&copy; {new Date().getFullYear()} Stallion Ranch Media. All rights reserved.</p>
           <p className="mt-2">Helping small businesses work smarter through digital solutions.</p>
         </div>

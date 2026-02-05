@@ -30,7 +30,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-gray-50">
+    <section id="services" className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">Our Services</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-900 max-w-2xl mx-auto">
             Comprehensive digital solutions designed to help your business thrive
           </p>
         </motion.div>
