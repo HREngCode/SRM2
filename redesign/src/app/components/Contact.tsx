@@ -3,6 +3,8 @@ import { color, motion, styleEffect } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
+
+
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,12 +14,12 @@ export function Contact() {
     message: '',
   });
 
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Initialize EmailJS with the public key when running in the browser
   useEffect(() => {
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
     if (publicKey) {
       try {
         emailjs.init(publicKey);
@@ -30,9 +32,9 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = (import.meta as any).env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
       setStatus('error');
@@ -111,7 +113,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="John Doe"
                 />
               </div>
@@ -127,7 +129,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="john@example.com"
                 />
               </div>
@@ -142,7 +144,7 @@ export function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="(555) 123-4567"
                 />
               </div>
@@ -157,7 +159,7 @@ export function Contact() {
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 >
                   <option value="">Select a service</option>
                   <option value="web-app">Web Application</option>
@@ -179,7 +181,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="Describe your project, goals, and timeline..."
                 />
               </div>
@@ -285,11 +287,49 @@ export function Contact() {
       </div>
 
       {/* Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-8 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-8 border-t border-gray-900">
         <div className="text-center text-gray-900">
           <p>&copy; {new Date().getFullYear()} Stallion Ranch Media. All rights reserved.</p>
           <p className="mt-2">Helping small businesses work smarter through digital solutions.</p>
         </div>
+
+      <div className="container pt-4">
+        {/* <!-- Section: Social media --> */}
+        <section className="mb-4 sm-layout">
+          {/* <!-- Facebook --> */}
+          <a
+            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="https://www.facebook.com/profile.php?id=61550360122580"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i className="fab fa-facebook-f"></i></a>
+
+          {/* <!-- Instagram --> */}
+          <a
+            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="https://www.instagram.com/ranchtech1/"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i className="fab fa-instagram"></i></a>
+
+          {/* <!-- Linkedin --> */}
+          <a
+            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="https://www.linkedin.com/company/stallion-ranch-media/"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i className="fab fa-linkedin"></i></a>
+          {/* <!-- Github --> */}
+          <a
+            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="https://github.com/HREngCode"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i className="fab fa-github"></i></a>
+        </section>
+        {/* <!-- Section: Social media --> */}
+      </div>
+  {/* <!-- Grid container --> */}
       </div>
     </section>
   );

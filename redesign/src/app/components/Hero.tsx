@@ -86,7 +86,7 @@ export function Hero() {
                 });
               }
             }}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 transition-all"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-gray-900 text-gray-900 rounded-lg hover:bg-white/10 transition-all"
           >
             Our Services
           </button>

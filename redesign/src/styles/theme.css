@@ -179,3 +179,10 @@
     line-height: 1.5;
   }
 }
+
+@layer utilities {
+  .sm-layout {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
