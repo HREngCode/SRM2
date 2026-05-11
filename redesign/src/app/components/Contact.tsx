@@ -1,20 +1,23 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { color, motion, styleEffect } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
-
-
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { color, motion, styleEffect } from "framer-motion";
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
 
-   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const ulStyle = {
+    marginLeft: "1.65em",
+  };
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Initialize EmailJS with the public key when running in the browser
@@ -37,13 +40,15 @@ export function Contact() {
     const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setStatus('error');
-      setErrorMessage('Missing EmailJS environment variables. Check `redesign/.env`.');
-      console.error('Missing EmailJS environment variables');
+      setStatus("error");
+      setErrorMessage(
+        "Missing EmailJS environment variables. Check `redesign/.env`."
+      );
+      console.error("Missing EmailJS environment variables");
       return;
     }
 
-    setStatus('sending');
+    setStatus("sending");
     setErrorMessage(null);
 
     const templateParams = {
@@ -55,22 +60,30 @@ export function Contact() {
     };
 
     try {
-      const res = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      setStatus('success');
+      const res = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+      setStatus("success");
       setErrorMessage(null);
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      console.log('EmailJS send response', res);
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      console.log("EmailJS send response", res);
     } catch (err: any) {
-      console.error('EmailJS send error', err);
-      setStatus('error');
-      const msg = err?.text || err?.message || JSON.stringify(err) || 'Unknown error';
+      console.error("EmailJS send error", err);
+      setStatus("error");
+      const msg =
+        err?.text || err?.message || JSON.stringify(err) || "Unknown error";
       setErrorMessage(msg);
     }
   };
 
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -87,9 +100,12 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">Let's Work Together</h2>
+          <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">
+            Let's Work Together
+          </h2>
           <p className="text-xl text-gray-900 max-w-2xl mx-auto">
-            Ready to transform your business with digital solutions? Get in touch and let's discuss your project.
+            Ready to transform your business with digital solutions? Get in
+            touch and let's discuss your project.
           </p>
         </motion.div>
 
@@ -188,25 +204,29 @@ export function Contact() {
 
               <button
                 type="submit"
-                disabled={status === 'sending'}
+                disabled={status === "sending"}
                 className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 text-gray-900 rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-60"
               >
-                {status === 'sending' ? 'Sending...' : 'Send Message'}
+                {status === "sending" ? "Sending..." : "Send Message"}
                 <Send size={20} />
               </button>
 
-              {status === 'success' && (
-                <div className="mt-3 text-green-600">Thank you — your message has been sent.</div>
+              {status === "success" && (
+                <div className="mt-3 text-green-600">
+                  Thank you — your message has been sent.
+                </div>
               )}
-              {status === 'error' && (
-                <div className="mt-3 text-red-600">Sorry, something went wrong. Please try again later.</div>
+              {status === "error" && (
+                <div className="mt-3 text-red-600">
+                  Sorry, something went wrong. Please try again later.
+                </div>
               )}
 
               {errorMessage && (
-                <div className="mt-2 text-sm text-red-600 break-words">Error: {errorMessage}</div>
+                <div className="mt-2 text-sm text-red-600 break-words">
+                  Error: {errorMessage}
+                </div>
               )}
-
-
             </form>
           </motion.div>
 
@@ -227,7 +247,10 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-yellow-100 mb-1">Email</div>
-                    <a href="mailto:info@stallionranchmedia.com" className="hover:text-yellow-100 transition-colors">
+                    <a
+                      href="mailto:info@stallionranchmedia.com"
+                      className="hover:text-yellow-100 transition-colors"
+                    >
                       info@stallionranchmedia.com
                     </a>
                   </div>
@@ -239,7 +262,10 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-yellow-100 mb-1">Phone</div>
-                    <a href="tel:+16418917329" className="hover:text-yellow-100 transition-colors">
+                    <a
+                      href="tel:+16418917329"
+                      className="hover:text-yellow-100 transition-colors"
+                    >
                       (641) 891-7329
                     </a>
                   </div>
@@ -257,28 +283,38 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="bg-transparent rounded-2xl p-8">
+            <div className="bg-transparent choose-us rounded-2xl p-8">
               <h3 className="text-2xl text-gray-900 mb-4">Why Choose Us?</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">Deep understanding of your business needs</span>
+                  <span className="text-gray-900">
+                    Deep understanding of your business needs
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">Custom solutions, not cookie-cutter templates</span>
+                  <span className="text-gray-900">
+                    Custom solutions, not cookie-cutter templates
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">Focus on automation and efficiency</span>
+                  <span className="text-gray-900">
+                    Focus on automation and efficiency
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">Ongoing support and maintenance</span>
+                  <span className="text-gray-900">
+                    Ongoing support and maintenance
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">Small business pricing and flexibility</span>
+                  <span className="text-gray-900">
+                    Small business pricing and flexibility
+                  </span>
                 </li>
               </ul>
             </div>
@@ -287,50 +323,102 @@ export function Contact() {
       </div>
 
       {/* Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-8 border-t border-gray-900">
-        <div className="text-center text-gray-900">
-          <p>&copy; {new Date().getFullYear()} Stallion Ranch Media. All rights reserved.</p>
-          <p className="mt-2">Helping small businesses work smarter through digital solutions.</p>
+      <footer>
+        <div className="footer-container">
+          <div className="footer-column">
+            <h5>About company</h5>
+            <p>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti.
+            </p>
+            <p>
+              Blanditiis praesentium voluptatum deleniti atque corrupti quos
+              dolores et quas molestias.
+            </p>
+          </div>
+          <div className="footer-column">
+            <h5>Search something</h5>
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="formControlLg"
+                placeholder="Search"
+              />
+            </div>
+            <ul className="fa-ul">
+              <li className="mb-3">
+                <span className="fa-li">
+                  <i className="fas fa-home"></i>
+                </span>
+                <span className="ms-2">New York, NY 10012, US</span>
+              </li>
+              <li className="mb-3">
+                <span className="fa-li">
+                  <i className="fas fa-envelope"></i>
+                </span>
+                <span className="ms-2">info@example.com</span>
+              </li>
+              <li className="mb-3">
+                <span className="fa-li">
+                  <i className="fas fa-phone"></i>
+                </span>
+                <span className="ms-2">+ 01 234 567 88</span>
+              </li>
+              <li className="mb-3">
+                <span className="fa-li">
+                  <i className="fas fa-print"></i>
+                </span>
+                <span className="ms-2">+ 01 234 567 89</span>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h5>Opening hours</h5>
+            <table className="table text-center text-gray-900">
+              <tbody className="font-weight-normal">
+                <tr>
+                  <td>Mon - Thu:</td>
+                  <td>8am - 9pm</td>
+                </tr>
+                <tr>
+                  <td>Fri - Sat:</td>
+                  <td>8am - 1am</td>
+                </tr>
+                <tr>
+                  <td>Sunday:</td>
+                  <td>9am - 10pm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <div className="social-media">
+          <a type="button" className="btn btn-floating btn-warning btn-lg">
+            <i className="fab fa-facebook-f"></i>
+          </a>
+          <a type="button" className="btn btn-floating btn-warning btn-lg">
+            <i className="fab fa-dribbble"></i>
+          </a>
+          <a type="button" className="btn btn-floating btn-warning btn-lg">
+            <i className="fab fa-twitter"></i>
+          </a>
+          <a type="button" className="btn btn-floating btn-warning btn-lg">
+            <i className="fab fa-google-plus-g"></i>
+          </a>
+        </div>
+        <div className="text-center text-gray-900">
+          <p>
+            &copy; {new Date().getFullYear()} Stallion Ranch Media. All rights
+            reserved.
+          </p>
+          <p className="mt-2">
+            Helping small businesses work smarter through digital solutions.
+          </p>
+        </div>
+      </footer>
 
-      <div className="container pt-4">
-        {/* <!-- Section: Social media --> */}
-        <section className="mb-4 sm-layout">
-          {/* <!-- Facebook --> */}
-          <a
-            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://www.facebook.com/profile.php?id=61550360122580"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i className="fab fa-facebook-f"></i></a>
-
-          {/* <!-- Instagram --> */}
-          <a
-            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://www.instagram.com/ranchtech1/"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i className="fab fa-instagram"></i></a>
-
-          {/* <!-- Linkedin --> */}
-          <a
-            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://www.linkedin.com/company/stallion-ranch-media/"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i className="fab fa-linkedin"></i></a>
-          {/* <!-- Github --> */}
-          <a
-            data-mdb-ripple-init className="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://github.com/HREngCode"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i className="fab fa-github"></i></a>
-        </section>
-        {/* <!-- Section: Social media --> */}
-      </div>
-  {/* <!-- Grid container --> */}
-      </div>
+      {/* <!-- End of .container --> */}
     </section>
   );
 }

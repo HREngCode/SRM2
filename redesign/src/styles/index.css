@@ -2,6 +2,29 @@
 @import './tailwind.css';
 @import './theme.css';
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slider-overlay {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
 nav {
   background: linear-gradient(90deg, #c29312 0%, #feffad 50%, #c29312 110%);
 }

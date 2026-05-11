@@ -1,6 +1,6 @@
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavigationProps {
   activeSection: string;
@@ -25,18 +25,18 @@ export function Navigation({
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
-    
+
     // Use setTimeout to ensure menu closes before scrolling
     setTimeout(() => {
-      if (sectionId === 'home') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const element = document.getElementById(sectionId);
         if (element) {
           const offset = 80;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       }
     }, 100);
@@ -56,13 +56,20 @@ export function Navigation({
                 <img
                   src={new URL("./assets/hplogo.png", import.meta.url).href}
                   alt="Home Logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover nav-img"
                 />
               </div>
               <span className="text-xl font-semibold text-gray-900 hidden sm:inline">
                 Stallion Ranch Media
               </span>
             </button>
+          </div>
+          <div className="w-12 h-12 overflow-hidden">
+            <img
+              src={new URL("./assets/hplogo.png", import.meta.url).href}
+              alt="Home Logo"
+              className="w-full h-full object-cover mobile-img"
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -118,18 +125,18 @@ export function Navigation({
                   }}
                   className={`block w-full text-left px-4 py-3 rounded-lg transition-colors pointer-events-auto cursor-pointer ${
                     activeSection === item.id
-                      ? 'bg-yellow-50 text-yellow-600 font-medium'
-                      : 'text-gray-600 hover:bg-gray-50'
+                      ? "bg-yellow-50 text-yellow-600 font-medium"
+                      : "text-gray-600 hover:bg-gray-50"
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <button 
-                onClick={() => scrollToSection('contact')}
+              <button
+                onClick={() => scrollToSection("contact")}
                 onTouchEnd={(e) => {
                   e.preventDefault();
-                  scrollToSection('contact');
+                  scrollToSection("contact");
                 }}
                 className="w-full px-4 py-3 bg-yellow-500 text-gray-900 font-medium rounded-lg hover:bg-yellow-600 transition-colors mt-2 pointer-events-auto cursor-pointer"
               >

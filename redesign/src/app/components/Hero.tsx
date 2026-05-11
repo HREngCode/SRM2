@@ -1,7 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-
-const ranchbg = new URL("./assets/ranchbg2.png", import.meta.url).href;
+import Title from "./Title";
+// import Banner from "./Banner";
+import Tags from "./Tags";
+import Description from "./Description";
+import BasicSlider from "./BasicSlider";
+import ranchbg from "./assets/ranchbg2.png";
 
 export function Hero() {
   const scrollToContact = () => {
@@ -15,10 +19,7 @@ export function Hero() {
   };
 
   return (
-    <section
-      id="home"
-      className="relative w-full"
-    >
+    <section id="home" className="relative w-full">
       {/* Content - appears above image on mobile, centered */}
       <div className="relative z-10 w-full pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
@@ -32,7 +33,7 @@ export function Hero() {
               <h1 className="text-3xl sm:text-5xl lg:text-7xl text-gray-900 mb-6">
                 Bring Your Ideas to Life
               </h1>
-              <p className="text-sm sm:text-xl lg:text-2xl text-gray-900 mb-8">
+              {/* <p className="text-sm sm:text-xl lg:text-2xl text-gray-900 mb-8">
                 Custom web applications, websites, graphics, and videos designed
                 for small businesses
               </p>
@@ -40,13 +41,27 @@ export function Hero() {
                 At Stallion Ranch Media, we help organizations work smarter, not
                 harder. We create digital solutions that automate tasks,
                 streamline workflows, and boost efficiency.
-              </p>
+              </p> */}
             </motion.div>
           </div>
         </div>
       </div>
       {/* Background with colored gradient and padded image container */}
-      <div className="relative z-0 flex items-center justify-center px-6 sm:px-12 bg-transparent">
+      <div className="max-w-6xl rounded-2xl overflow-hidden bg-transparent min-h-96 mx-auto">
+        {/* **Added to test the slider component - remove later** */}
+        <BasicSlider />
+        {/* Banner image testing */}
+        {/* <Banner image={ranchbg}>
+          <Title title="Custom web applications, websites, graphics, and videos designed for small businesses" />
+          <Tags tags={["Action", "Thriller"]} />
+          <Description
+            description="At Stallion Ranch Media, we help organizations work smarter, not
+        harder. We create digital solutions that automate tasks,
+        streamline workflows, and boost efficiency."
+          />
+        </Banner> */}
+      </div>
+      {/* <div className="relative z-0 flex items-center justify-center px-6 sm:px-12 bg-transparent">
         <div className="relative w-full max-w-6xl rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-transparent min-h-96">
           <img
             src={ranchbg}
@@ -55,7 +70,7 @@ export function Hero() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/30 to-transparent pointer-events-none" />
         </div>
-      </div>
+      </div> */}
 
       {/* Buttons - positioned below image */}
       <div className="relative z-10 flex justify-center px-4 sm:px-6 lg:px-8 py-8">
@@ -93,6 +108,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-
   );
 }
