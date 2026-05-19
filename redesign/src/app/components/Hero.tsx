@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Title from "./Title";
-// import Banner from "./Banner";
+import Banner from "./Banner";
 import Tags from "./Tags";
 import Description from "./Description";
 import BasicSlider from "./BasicSlider";
@@ -30,9 +30,40 @@ export function Hero() {
               transition={{ duration: 0.8 }}
               className="text-center max-w-3xl"
             >
-              <h1 className="text-3xl sm:text-5xl lg:text-7xl text-gray-900 mb-6">
+              <div
+                className="animate-[pulse_3s_ease-in-out_infinite] hover:scale-105 transition-transform duration-500 cursor-pointer
+                bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 
+                border-4 border-amber-950 rounded-xl px-12 py-8 shadow-2xl max-w-2xl text-center
+                before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1),transparent)]"
+              >
+                <div className="absolute inset-x-0 top-1/2 h-0.5 bg-amber-900/40 border-b border-amber-950/20"></div>
+                <div className="absolute inset-x-0 top-1/4 h-0.5 bg-amber-900/30 border-b border-amber-950/10"></div>
+
+                <div className="absolute top-3 left-3 w-3 h-3 bg-stone-700 border border-stone-900 rounded-full shadow-inner"></div>
+                <div className="absolute top-3 right-3 w-3 h-3 bg-stone-700 border border-stone-900 rounded-full shadow-full"></div>
+                <div className="absolute bottom-3 left-3 w-3 h-3 bg-stone-700 border border-stone-900 rounded-full shadow-inner"></div>
+                <div className="absolute bottom-3 right-3 w-3 h-3 bg-stone-700 border border-stone-900 rounded-full shadow-full"></div>
+
+                <h1
+                  className="relative z-10 font-serif text-5xl md:text-6xl font-extrabold uppercase tracking-wide
+                 text-amber-100 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_0px_#451a03]"
+                >
+                  WELCOME TO THE RANCH
+                </h1>
+              </div>
+              {/* <h1 className="text-3xl sm:text-5xl lg:text-7xl text-gray-900 mb-6">
                 Bring Your Ideas to Life
               </h1>
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  color: "#0056b3",
+                }}
+              >
+                <i className="fas fa-star" style={{ color: "#0056b3" }}></i>{" "}
+                Ultimate Feature
+              </p> */}
               {/* <p className="text-sm sm:text-xl lg:text-2xl text-gray-900 mb-8">
                 Custom web applications, websites, graphics, and videos designed
                 for small businesses

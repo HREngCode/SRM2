@@ -3,10 +3,10 @@
 // import Title from "./Title";
 // import Subtitle from "./Subtitle";
 
+import React from "react";
 import ranchbg2 from "../components/assets/ranchbg2.png";
-import srmpoloblk from "../components/assets/SRMPOLOBLK.png";
-import tshttkbrn from "../components/assets/TSHTTKBRN.png";
 import flocrm from "../components/assets/flocrm.png";
+import landscape from "../components/assets/landscaping.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
@@ -19,8 +19,31 @@ import "swiper/css/effect-fade";
 
 const HeroSlider: React.FC = () => {
   const slides = [
-    { id: 1, title: "Welcome to SRM2", image: ranchbg2 },
-    { id: 2, title: "Modern Redesign", image: flocrm },
+    {
+      id: 1,
+      title: "YOUR TECHNICAL PARTNER FOR SUCCESS",
+      description: "Making technology work for you and your business",
+      ctaText: "Shop Now",
+      ctaLink: "/shop",
+      image: ranchbg2,
+    },
+    {
+      id: 2,
+      title: "BRING YOUR IDEAS TO LIFE",
+      description:
+        "From concept to creation, we turn your vision into reality.",
+      ctaText: "Explore More",
+      ctaLink: "/collections",
+      image: flocrm,
+    },
+    {
+      id: 3,
+      title: "MODERN REDESIGN",
+      description: "Discover our latest seasonal collection.",
+      ctaText: "Explore More",
+      ctaLink: "/collections",
+      image: landscape,
+    },
   ];
 
   return (
@@ -38,13 +61,27 @@ const HeroSlider: React.FC = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative h-full w-full flex items-center justify-center bg-cover bg-center"
+              className="relative h-full w-full flex items-center justify-start bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="absolute inset-0 bg-black/40" /> {/* Overlay */}
-              <h1 className="relative z-10 text-white text-6xl font-bold">
-                {slide.title}
-              </h1>
+              {/* Dark Overlay for Readability */}
+              <div className="absolute inset-0 bg-black/50" />
+
+              {/* Left-Aligned Content Container */}
+              <div className="relative z-10 text-left px-8 md:px-24 max-w-4xl w-full">
+                <h1 className="text-white text-5xl md:text-7xl font-bold mb-4">
+                  {slide.title}
+                </h1>
+                <p className="text-white text-lg md:text-xl mb-8 opacity-90 max-w-xl">
+                  {slide.description}
+                </p>
+                <a
+                  href={slide.ctaLink}
+                  className="inline-block bg-white text-black px-8 py-3 rounded-full font-semibold transition-transform hover:scale-105 active:scale-95"
+                >
+                  {slide.ctaText}
+                </a>
+              </div>
             </div>
           </SwiperSlide>
         ))}
