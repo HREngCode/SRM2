@@ -29,6 +29,12 @@ nav {
   background: linear-gradient(90deg, #c29312 0%, #feffad 50%, #c29312 110%);
 }
 
+@keyframes sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+
 /* Global page gradient: blue -> gray -> white */
 html, body, #root {
   min-height: 100%;

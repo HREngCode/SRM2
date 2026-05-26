@@ -23,8 +23,9 @@ const HeroSlider: React.FC = () => {
       id: 1,
       title: "YOUR TECHNICAL PARTNER FOR SUCCESS",
       description: "Making technology work for you and your business",
-      ctaText: "Shop Now",
-      ctaLink: "/shop",
+      ctaText: "Contact Us",
+      // Changed to anchor hash links to keep users on the same page
+      ctaLink: "#contact",
       image: ranchbg2,
     },
     {
@@ -32,22 +33,38 @@ const HeroSlider: React.FC = () => {
       title: "BRING YOUR IDEAS TO LIFE",
       description:
         "From concept to creation, we turn your vision into reality.",
-      ctaText: "Explore More",
-      ctaLink: "/collections",
+      ctaText: "Services",
+      // Changed to anchor hash links
+      ctaLink: "#services",
       image: flocrm,
     },
     {
       id: 3,
       title: "MODERN REDESIGN",
-      description: "Discover our latest seasonal collection.",
-      ctaText: "Explore More",
-      ctaLink: "/collections",
+      description: "See what we can do for you.",
+      ctaText: "Portfolio",
+      // Changed to anchor hash links
+      ctaLink: "#portfolio",
       image: landscape,
     },
   ];
 
+  // Optional: Native JS Smooth Scroll Handler to override jumpy anchor tags
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <div className="h-screen w-full">
+    <div className="h-full w-full">
+      {" "}
+      {/* Swiper matches parent framework canvas */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"
@@ -69,7 +86,7 @@ const HeroSlider: React.FC = () => {
 
               {/* Left-Aligned Content Container */}
               <div className="relative z-10 text-left px-8 md:px-24 max-w-4xl w-full">
-                <h1 className="text-white text-5xl md:text-7xl font-bold mb-4">
+                <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
                   {slide.title}
                 </h1>
                 <p className="text-white text-lg md:text-xl mb-8 opacity-90 max-w-xl">
@@ -77,7 +94,8 @@ const HeroSlider: React.FC = () => {
                 </p>
                 <a
                   href={slide.ctaLink}
-                  className="inline-block bg-white text-black px-8 py-3 rounded-full font-semibold transition-transform hover:scale-105 active:scale-95"
+                  onClick={(e) => handleScroll(e, slide.ctaLink)}
+                  className="inline-block bg-white text-black px-8 py-3 rounded-full font-semibold transition-all hover:scale-105 active:scale-95 cursor-pointer pointer-events-auto"
                 >
                   {slide.ctaText}
                 </a>

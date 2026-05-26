@@ -3,11 +3,13 @@
     "moduleResolution": "bundler",
     "types": ["node"],
     "ignoreDeprecations": "6.0",
-    "module": "Node16",
+    "module": "es2020",
     "jsx": "react-jsx",
         "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
+

@@ -328,12 +328,20 @@ export function Contact() {
           <div className="footer-column">
             <h5>About company</h5>
             <p>
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque corrupti.
+              Our mission behind our business is to help smaller organizations
+              streamline processes that would normally require manual efforts
+              such as data capture, keyed in input, or copy/paste of information
+              through the use of automation tools. It all starts with an
+              evaluation of day to day operations and how processes flow. Then
+              the process is broke down step by step to identify areas of
+              opportunity.
             </p>
             <p>
-              Blanditiis praesentium voluptatum deleniti atque corrupti quos
-              dolores et quas molestias.
+              These areas may include things as simple as basic templates or as
+              complex as a custom built application or web page to take in data
+              from end users. It may also consist of exposing available tools
+              that leaders may not even have known existed. Whatever the case,
+              Stallion Ranch Media is driven by helping others succeed.
             </p>
           </div>
           <div className="footer-column">
@@ -351,25 +359,19 @@ export function Contact() {
                 <span className="fa-li">
                   <i className="fas fa-home"></i>
                 </span>
-                <span className="ms-2">New York, NY 10012, US</span>
+                <span className="ms-2">Knoxville, IA 50138, US</span>
               </li>
               <li className="mb-3">
                 <span className="fa-li">
                   <i className="fas fa-envelope"></i>
                 </span>
-                <span className="ms-2">info@example.com</span>
+                <span className="ms-2">info@stallionranchmedia.com</span>
               </li>
               <li className="mb-3">
                 <span className="fa-li">
                   <i className="fas fa-phone"></i>
                 </span>
-                <span className="ms-2">+ 01 234 567 88</span>
-              </li>
-              <li className="mb-3">
-                <span className="fa-li">
-                  <i className="fas fa-print"></i>
-                </span>
-                <span className="ms-2">+ 01 234 567 89</span>
+                <span className="ms-2">641-891-7329</span>
               </li>
             </ul>
           </div>
@@ -378,16 +380,16 @@ export function Contact() {
             <table className="table text-center text-gray-900">
               <tbody className="font-weight-normal">
                 <tr>
-                  <td>Mon - Thu:</td>
-                  <td>8am - 9pm</td>
+                  <td>Mon - Fri: </td>
+                  <td>4pm - 8pm</td>
                 </tr>
                 <tr>
-                  <td>Fri - Sat:</td>
-                  <td>8am - 1am</td>
+                  <td>Sat: </td>
+                  <td>8am - 1pm</td>
                 </tr>
                 <tr>
-                  <td>Sunday:</td>
-                  <td>9am - 10pm</td>
+                  <td>Sun: </td>
+                  <td>Closed</td>
                 </tr>
               </tbody>
             </table>

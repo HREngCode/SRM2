@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import hplogo from "./assets/hplogo.png";
 
 interface NavigationProps {
   activeSection: string;
@@ -54,7 +55,7 @@ export function Navigation({
             >
               <div className="w-12 h-12 overflow-hidden">
                 <img
-                  src={new URL("./assets/hplogo.png", import.meta.url).href}
+                  src={hplogo}
                   alt="Home Logo"
                   className="w-full h-full object-cover nav-img"
                 />
@@ -66,7 +67,7 @@ export function Navigation({
           </div>
           <div className="w-12 h-12 overflow-hidden">
             <img
-              src={new URL("./assets/hplogo.png", import.meta.url).href}
+              src={hplogo}
               alt="Home Logo"
               className="w-full h-full object-cover mobile-img"
             />
