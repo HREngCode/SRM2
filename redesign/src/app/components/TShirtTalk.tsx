@@ -1,12 +1,23 @@
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import socialImage from "./assets/social.png";
 
-const tshirtTalkImage = new URL('./assets/TST.PNG', import.meta.url).href;
+const tshirtTalkImage = new URL("./assets/TST.PNG", import.meta.url).href;
 
 export function TShirtTalk() {
   return (
     <section className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Container remains centered with a bottom margin */}
+        <div className="flex justify-center mb-8">
+          <img
+            src={socialImage}
+            alt="Social"
+            /* 1. Replaced 'h-20 w-auto' with the identical responsive constraints */
+            className="h-auto w-full max-w-[280px] sm:max-w-[400px] md:max-w-[500px] object-contain"
+          />
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -14,12 +25,9 @@ export function TShirtTalk() {
           transition={{ duration: 0.6 }}
           className="relative rounded-2xl overflow-hidden shadow-2xl"
         >
-          {/* Background overlay with gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-slate-700 to-white opacity-90" />
-          
-          {/* Content and Image Layout */}
+
           <div className="relative grid lg:grid-cols-2 gap-8 items-center p-8 sm:p-12">
-            {/* Left Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -31,7 +39,8 @@ export function TShirtTalk() {
                 T-Shirt Talk
               </h2>
               <p className="text-xl text-white/90">
-                Catch the weekly uplifting messages on T-Shirt Talk. Join us for inspiring conversations and community connection every week.
+                Catch the weekly uplifting messages on T-Shirt Talk. Join us for
+                inspiring conversations and community connection every week.
               </p>
               <a
                 href="https://www.tiktok.com/@tshirttalk"

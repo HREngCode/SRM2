@@ -21,7 +21,7 @@ const HeroSlider: React.FC = () => {
   const slides = [
     {
       id: 1,
-      title: "YOUR TECHNICAL PARTNER FOR SUCCESS",
+      title: "YOUR TECHNICAL PARTNER",
       description: "Making technology work for you and your business",
       ctaText: "Contact Us",
       // Changed to anchor hash links to keep users on the same page

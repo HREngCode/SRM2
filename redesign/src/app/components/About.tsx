@@ -1,5 +1,7 @@
 import { Target, Zap, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+/* 1. Import the new about_us sign asset */
+import aboutUsSign from "./assets/about_us.png";
 
 const values = [
   {
@@ -26,6 +28,25 @@ export function About() {
   return (
     <section id="about" className="py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 w-full flex flex-col items-center"
+        >
+          <div
+            className="bg-center bg-no-repeat pt-14 pb-16 px-12 sm:px-20 w-full max-w-2xl mx-auto flex flex-col items-center justify-center drop-shadow-md"
+            style={{
+              backgroundImage: `url(${aboutUsSign})`,
+              backgroundSize: "100% 100%",
+            }}
+          >
+            {/* Screen-reader hidden accessible header text */}
+            <h2 className="sr-only">About Us</h2>
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -34,7 +55,7 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl text-gray-900 mb-6">
+            <h2 className="text-4xl sm:text-5xl text-gray-900 mb-6 font-serif">
               Work Smarter, Not Harder
             </h2>
             <p className="text-lg text-gray-900 mb-6">
@@ -104,20 +125,13 @@ export function About() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="bg-white rounded-xl shadow-xl p-4 lg:p-6 col-span-1"
               >
-                <div className="text-3xl lg:text-4xl text-yellow-600 mb-1">100%</div>
-                <div className="text-sm lg:text-base text-gray-600">Client Focused</div>
+                <div className="text-3xl lg:text-4xl text-yellow-600 mb-1">
+                  100%
+                </div>
+                <div className="text-sm lg:text-base text-gray-600">
+                  Client Focused
+                </div>
               </motion.div>
-
-              {/* <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-br from-gray-700 to-yellow-500 rounded-xl shadow-xl p-4 lg:p-6 text-white col-span-1"
-              >
-                <div className="text-3xl lg:text-4xl mb-1">24/7</div>
-                <div className="text-sm lg:text-base text-yellow-100">Support Available</div>
-              </motion.div> */}
             </div>
           </motion.div>
         </div>

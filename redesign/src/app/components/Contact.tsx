@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { color, motion, styleEffect } from "framer-motion";
 import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import contactUsImg from "./assets/contact_us.png";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -92,7 +93,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-center bg-no-repeat pt-14 pb-16 px-12 sm:px-20 w-full max-w-2xl mx-auto flex flex-col items-center justify-center drop-shadow-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,90 +101,95 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl text-gray-900 mb-4">
-            Let's Work Together
-          </h2>
+          <img
+            src={contactUsImg}
+            alt="Contact Us"
+            className="mx-auto mb-6 h-auto max-w-[280px] sm:max-w-[400px] md:max-w-[500px]"
+          />
+
           <p className="text-xl text-gray-900 max-w-2xl mx-auto">
             Ready to transform your business with digital solutions? Get in
             touch and let's discuss your project.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+        <div className="flex justify-center w-full">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }} // 2. Changed slide-in from horizontal to vertical fade
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="w-full max-w-3xl" // 3. Set a clean, wider form max-width constraint for a centered block
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-gray-900 mb-2">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  placeholder="John Doe"
-                />
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-gray-900 mb-2">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    placeholder="John Doe"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="email" className="block text-gray-900 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  placeholder="john@example.com"
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="block text-gray-900 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    placeholder="john@example.com"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-gray-900 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  placeholder="(555) 123-4567"
-                />
-              </div>
+                <div>
+                  <label htmlFor="phone" className="block text-gray-900 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
 
-              <div>
-                <label htmlFor="service" className="block text-gray-900 mb-2">
-                  Service Interested In *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                >
-                  <option value="">Select a service</option>
-                  <option value="web-app">Web Application</option>
-                  <option value="website">Website</option>
-                  <option value="graphics">Graphics</option>
-                  <option value="video">Video</option>
-                  <option value="multiple">Multiple Services</option>
-                </select>
+                <div>
+                  <label htmlFor="service" className="block text-gray-900 mb-2">
+                    Service Interested In *
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="web-app">Web Application</option>
+                    <option value="website">Website</option>
+                    <option value="graphics">Graphics</option>
+                    <option value="video">Video</option>
+                    <option value="multiple">Multiple Services</option>
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -228,96 +234,6 @@ export function Contact() {
                 </div>
               )}
             </form>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div className="bg-gradient-to-br from-gray-700 to-yellow-500 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl mb-6">Get in Touch</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <div className="text-yellow-100 mb-1">Email</div>
-                    <a
-                      href="mailto:info@stallionranchmedia.com"
-                      className="hover:text-yellow-100 transition-colors"
-                    >
-                      info@stallionranchmedia.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone size={24} />
-                  </div>
-                  <div>
-                    <div className="text-yellow-100 mb-1">Phone</div>
-                    <a
-                      href="tel:+16418917329"
-                      className="hover:text-yellow-100 transition-colors"
-                    >
-                      (641) 891-7329
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <div className="text-yellow-100 mb-1">Location</div>
-                    <div>Serving Small Businesses Nationwide</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-transparent choose-us rounded-2xl p-8">
-              <h3 className="text-2xl text-gray-900 mb-4">Why Choose Us?</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">
-                    Deep understanding of your business needs
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">
-                    Custom solutions, not cookie-cutter templates
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">
-                    Focus on automation and efficiency
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">
-                    Ongoing support and maintenance
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-yellow-600 mt-1">✓</span>
-                  <span className="text-gray-900">
-                    Small business pricing and flexibility
-                  </span>
-                </li>
-              </ul>
-            </div>
           </motion.div>
         </div>
       </div>
