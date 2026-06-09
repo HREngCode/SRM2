@@ -261,15 +261,25 @@ export function Contact() {
             </p>
           </div>
           <div className="footer-column">
-            <h5>Search something</h5>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                id="formControlLg"
-                placeholder="Search"
-              />
-            </div>
+            <h5>Opening hours</h5>
+            <table className="table text-center text-gray-900">
+              <tbody className="font-weight-normal">
+                <tr>
+                  <td>M-F: </td>
+                  <td> 4pm - 8pm</td>
+                </tr>
+                <tr>
+                  <td>Sat: </td>
+                  <td> 8am - 1pm</td>
+                </tr>
+                <tr>
+                  <td>Sun: </td>
+                  <td> Closed</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <br />
             <ul className="fa-ul">
               <li className="mb-3">
                 <span className="fa-li">
@@ -290,25 +300,6 @@ export function Contact() {
                 <span className="ms-2">641-891-7329</span>
               </li>
             </ul>
-          </div>
-          <div className="footer-column">
-            <h5>Opening hours</h5>
-            <table className="table text-center text-gray-900">
-              <tbody className="font-weight-normal">
-                <tr>
-                  <td>Mon - Fri: </td>
-                  <td>4pm - 8pm</td>
-                </tr>
-                <tr>
-                  <td>Sat: </td>
-                  <td>8am - 1pm</td>
-                </tr>
-                <tr>
-                  <td>Sun: </td>
-                  <td>Closed</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
         <div className="social-media">
